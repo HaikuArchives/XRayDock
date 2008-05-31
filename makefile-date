@@ -1,0 +1,5 @@
+#!/bin/sh
+
+DAY=+%Y%j
+DATE=`date $DAY` 
+echo $DATE
