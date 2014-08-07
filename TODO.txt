@@ -1,0 +1,33 @@
+To do: 
+
+-> FULL OF THINGS! 
+
+use the wheel mouse button to preview the windows! 
+
+
+1 - keep the original look of the icons or pictures 
+
+2 - reduce the size of the icons if there are too many 
+
+4 - for icons designating a folder create a list of file contents 
+
+5 - to choose the name of the icon and not his way; the default path is shown as a name has not been given. 
+
+## 6 - to adapt if change workspace 
+
+## 7 - settle the crash when images are missing ... you have to put one in the place! 
+
+dividing lines 
+
+
+ok ** ** appwatcher 
+
+different organization windows 
+
+an update to the name of the window IMPORTANT +++ 
+
+--ok ---- crash strcchar to be settled 
+
+--- ok --- move the preview, slightly down, or completely right 
+
+possibly make a thread comparing the names and see if they have changed
