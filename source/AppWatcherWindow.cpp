@@ -3,7 +3,6 @@
 
 #include "AppWatcherWindow.h"
 
-
 #include <Roster.h>
 #include <VolumeRoster.h>
 #include <NodeMonitor.h>
@@ -22,14 +21,8 @@
 #include <Node.h>
 #include <NodeInfo.h>
 
-#ifndef MINIMIZED_WINDOW_H
 #include "MinimizedWindow.h"
-#endif
-
-#ifndef XDOCK_APP_H
 #include "XDockApp.h"
-#endif
-
 #include "messages.h"
 
 #define TrackerSig "application/x-vnd.Be-TRAK"
@@ -41,7 +34,10 @@ WatcherWindow::WatcherWindow()
 		: BWindow(BRect(0,100,90,400), "Watcher", B_FLOATING_WINDOW, B_NOT_ZOOMABLE | B_NOT_H_RESIZABLE | B_NOT_CLOSABLE | B_WILL_ACCEPT_FIRST_CLICK | B_WILL_DRAW)
 {
 	rgb_color noir = {0,0,0,125};
-	SetWindowColor(noir);
+	
+	// TODO: [waddlesplash] Yet more Zeta/Dano...
+	//SetWindowColor(noir);
+	
 	vertical = true;
 	BScreen screen;
 	MoveTo(screen.Frame().right - 90, screen.Frame().bottom - 400);
@@ -703,7 +699,7 @@ void
 WatcherWindow::StartWatching()
 {
 	BMessenger msgr(this);
-	be_roster->StartWatching(msgr, B_REQUEST_LAUNCHED | B_REQUEST_QUIT | B_REQUEST_ACTIVATED | B_REQUEST_WINDOW_ACTIVATED);
+	be_roster->StartWatching(msgr, B_REQUEST_LAUNCHED | B_REQUEST_QUIT | B_REQUEST_ACTIVATED);
 	
 
 }
@@ -823,8 +819,9 @@ WatcherWindow::MessageReceived(BMessage *msg)
 			BMessenger *mess;
 			mess = new BMessenger(this);
 			
-			if(*mess != BMessenger(be_roster->ActiveWindow(true)))
-				BMessenger(be_roster->ActiveWindow(false)).SendMessage(B_QUIT_REQUESTED);
+			// TODO: [waddlesplash] Yet more Zeta/Dano...
+			//if(*mess != BMessenger(be_roster->ActiveWindow(true)))
+			//	BMessenger(be_roster->ActiveWindow(false)).SendMessage(B_QUIT_REQUESTED);
 			
 			UnlockLooper();
 			break;
@@ -887,6 +884,7 @@ WatcherWindow::MessageReceived(BMessage *msg)
 			
 		}
 		break;
+#if 0 // TODO: [waddlesplash] Yet more Zeta/Dano...
 		case B_SOME_WINDOW_ACTIVATED:
 		{
 			
@@ -910,6 +908,7 @@ WatcherWindow::MessageReceived(BMessage *msg)
 			
 			break;
 		}
+#endif
 		default:
 			BWindow::MessageReceived(msg);	
 	}

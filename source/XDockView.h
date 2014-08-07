@@ -1,17 +1,10 @@
 /* XDockView.h par etno 2008 */
-
-
-#include <Bitmap.h>
-
-
 #ifndef XDOCK_VIEW_H
 #define XDOCK_VIEW_H
 
-#ifndef _STRING_VIEW_H
+#include <Bitmap.h>
+#include <String.h>
 #include <StringView.h>
-#endif
-
-
 
 #define DOCK_CHANGE_ICON		'dChI'
 #define DOCK_CHANGE_SHORTCUT	'dChS'

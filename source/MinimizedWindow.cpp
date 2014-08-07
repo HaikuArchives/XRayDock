@@ -2,21 +2,18 @@
 
 #include "MinimizedWindow.h"
 #include <Screen.h>
-#include <experimental/BitmapTools.h>
+#include "BitmapTools.h"
 #include <NodeInfo.h>
+#include <Font.h>
 
-#ifndef TEAM_CONTEXTUAL_MENU_H
+#include <stdio.h>
+
 #include "TeamContextualMenu.h"
-#endif
-
-#ifndef XDOCK_APP_H
 #include "XDockApp.h"
-#endif
 
 #define INVALIDATE	'INVA'
 
 
-#include <Font.h>
 void
 MinimizedView::Draw(BRect rect)
 {
@@ -114,7 +111,7 @@ MinimizedView::MouseDown(BPoint pt)
 					BMessage msg(B_MOUSE_DOWN);
 					msg.AddString("nom", sig.String());
 					msg.AddInt32("id", ID);
-					BMessenger(((XDockApplication*)be_app)->watch).SendMessage(msg);
+					BMessenger(((XDockApplication*)be_app)->watch).SendMessage(&msg);
 					return;
 					break;
 				}
@@ -226,7 +223,7 @@ MinimizedView::MouseDown(BPoint pt)
 		}
 		}
 		break;
-		case B_THIRD_MOUSE_BUTTON:
+		case B_TERTIARY_MOUSE_BUTTON:
 		{
 		if (r.Contains(pt)) {	
 			
@@ -234,11 +231,11 @@ MinimizedView::MouseDown(BPoint pt)
 			msg.AddString("nom", sig.String());
 			msg.AddInt32("id", ID);
 			//msg.AddBool("close", true);
-			BMessenger(((XDockApplication*)be_app)->watch).SendMessage(msg);
+			BMessenger(((XDockApplication*)be_app)->watch).SendMessage(&msg);
 		}
 		}
 		break;
-		case B_SECOND_MOUSE_BUTTON:
+		case B_SECONDARY_MOUSE_BUTTON:
 		{
 		
 			Window()->Activate(false);
@@ -360,7 +357,7 @@ MinimizedView::Pulse()
 		msg.AddString("nom", sig.String());
 		msg.AddInt32("id", ID);
 
-	BMessenger(((XDockApplication*)be_app)->watch).SendMessage(msg);
+	BMessenger(((XDockApplication*)be_app)->watch).SendMessage(&msg);
 	//	delete msg;
 }
 void

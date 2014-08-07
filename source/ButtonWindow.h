@@ -2,9 +2,7 @@
 #ifndef BUTTON_WINDOW_H
 #define BUTTON_WINDOW_H
 
-#ifndef _WINDOW_H
 #include <Window.h>
-#endif
 #include <Button.h>
 #include <View.h>
 

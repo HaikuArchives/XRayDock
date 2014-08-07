@@ -1,21 +1,13 @@
 /* XDockApp.cpp par etno 2008 */
 
-#ifndef BACK_WINDOW_H
 #include "BackWindow.h"
-#endif
-#ifndef BUTTON_WINDOW_H
 #include "ButtonWindow.h"
-#endif
-#ifndef XDOCK_WINDOW_H
 #include "XDockWindow.h"
-#endif
-#ifndef XDOCK_APP_H
 #include "XDockApp.h"
-#endif
-#ifndef APP_WATCHER_WINDOW_H
 #include "AppWatcherWindow.h"
-#endif
+
 #include <Screen.h>
+#include <stdio.h>
 
 int main(int, char**)
 {	

@@ -3,7 +3,7 @@
 
 #include <Bitmap.h>
 #include <TranslationUtils.h>
-#include <experimental/BitmapTools.h>
+#include "BitmapTools.h"
 #include <FilePanel.h>
 #include <Path.h>
 #include <Entry.h>
@@ -13,84 +13,56 @@
 #include <Directory.h>
 #include <FindDirectory.h>
 #include <Roster.h>
-#include "messages.h"
 #include <malloc.h>
 #include <Font.h>
 #include <Button.h>
 #include <BitmapStream.h>
 #include <TranslatorRoster.h>
 #include <NodeInfo.h>
+
 #include <stdlib.h>
+#include <stdio.h>
 
+#include "messages.h"
 
-#ifndef _APPLICATION_H
 #include <Application.h>
-#endif
-#ifndef BACK_WINDOW_H
 #include "BackWindow.h"
-#endif
-#ifndef DOCK_IMAGE_FILTER_H
 #include "DockImageFilter.h"
-#endif
-#ifndef XDOCK_APP_H
 #include "XDockApp.h"
-#endif
-
-
-
 
 BackView::BackView(BRect rect)
 	   	   : BView(rect, "", B_FOLLOW_ALL, B_WILL_DRAW)
 {
-
 }
 
 BackView::~BackView()
 {
-
 }
 
 void
 BackView::AttachedToWindow()
 {
-
 }
 
-
-
-
 void
-BackWindow::Resize(){
-
-				
+BackWindow::Resize()
+{
 				int icon_size_ = ((XDockApplication*)be_app)->icon_size;
 				float ratio = (float)(((XDockApplication*)be_app)->expanded_ratio_size);	
-				
-				
-				
-												
+
 				BPoint		pt;
 				BScreen screen;
-				
-				
+
 				ulong		button;
 				backview->GetMouse(&pt, &button);
-				
-				
-				
-				
-				
+
 				// pour eviter le flashing lors du drag n drop on snooze le thread quand le bouton est enfoncé :
 				while(button == B_PRIMARY_MOUSE_BUTTON){
 					backview->GetMouse(&pt, &button);
 					snooze(1000);	
 				}
-				
-				
-				
+
 				nbb_temp = windows_list->CountItems();
-				
-				
 				longueur_totale = 0;
 				
 				int i;
@@ -440,8 +412,9 @@ BackWindow::BackWindow(BRect frame)
 	
 	// Remove the temporary view
 	RemoveChild( &tempView);
-		
-	ClipWindowToPicture(pic,BPoint(0,0), 0);
+	
+	// TODO: [waddlesplash] yet more Zeta/Dano...
+	//ClipWindowToPicture(pic,BPoint(0,0), 0);
 
 
 

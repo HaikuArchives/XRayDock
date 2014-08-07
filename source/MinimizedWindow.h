@@ -5,6 +5,7 @@
 
 #include <View.h>
 #include <Bitmap.h>
+#include <String.h>
 
 #define	update_Windows	'upDw'
 #define	B_MIDDLE_MOUSE_DOWN	'MmDw'

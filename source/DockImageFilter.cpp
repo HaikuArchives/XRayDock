@@ -12,7 +12,7 @@ DockImageFilter::~DockImageFilter()
 }
 
 bool
-DockImageFilter::Filter(const entry_ref*, BNode*, struct stat*, const char* mimetype)
+DockImageFilter::Filter(const entry_ref*, BNode*, struct stat_beos*, const char* mimetype)
 {
 	if (strcmp("application/x-vnd.Be-directory", mimetype) == 0)
   		return true;

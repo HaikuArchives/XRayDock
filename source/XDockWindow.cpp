@@ -2,29 +2,23 @@
 
 #include <Bitmap.h>
 #include <TranslationUtils.h>
-#include <experimental/BitmapTools.h>
+#include "BitmapTools.h"
 #include <Entry.h>
 #include <Path.h>
 #include <Alert.h>
-#include "messages.h"
 #include <NodeInfo.h>
 #include <SymLink.h>
-
-
-#ifndef _APPLICATION_H
 #include <Application.h>
-#endif
-#ifndef XDOCK_WINDOW_H
-#include "XDockWindow.h"
-#endif
-#ifndef XDOCK_APP_H
-#include "XDockApp.h"
-#endif
-#ifndef DOCK_IMAGE_FILTER_H
-#include "DockImageFilter.h"
-#endif
 
-status_t ClipWindowToPicture(BPicture *picture, BPoint offset, uint32 flags);
+#include "messages.h"
+#include "XDockWindow.h"
+#include "XDockApp.h"
+#include "DockImageFilter.h"
+
+#include <stdio.h>
+
+// TODO: [waddlesplash] Yet more Zeta/Dano...
+//status_t ClipWindowToPicture(BPicture *picture, BPoint offset, uint32 flags);
 
 
 XDockWindow::XDockWindow(BRect frame, const char *icon_path, const char *shortcut_path, bool clip)
@@ -42,10 +36,10 @@ XDockWindow::XDockWindow(BRect frame, const char *icon_path, const char *shortcu
 ///	printf("index_window %d \n", index);
 	
 	
-	clipping_allowed = clip;
-	bool_transparency = clip;
-	if(clipping_allowed == true)
-		ClipWindowToPicture(ClippedPicture(Bounds(), icon_path),BPoint(0,0), 0);
+	clipping_allowed = false;
+	bool_transparency = false;
+//	if(clipping_allowed == true)
+//		ClipWindowToPicture(ClippedPicture(Bounds(), icon_path),BPoint(0,0), 0);
 	
 	SetPulseRate(80000);
 
@@ -114,13 +108,13 @@ BPicture
 void
 XDockWindow::FrameResized(float, float){
 	
-	if(clipping_allowed == true){
-		ClipWindowToPicture(ClippedPicture(Bounds(), view->iconPath.String()),BPoint(0,0), 0);
-		delete picture;
-	}
-	else {
+	//if(clipping_allowed == true){
+	//	ClipWindowToPicture(ClippedPicture(Bounds(), view->iconPath.String()),BPoint(0,0), 0);
+	//	delete picture;
+	//}
+	//else {
 		view->Draw(Bounds());
-	}
+	//}
 	
 	
 	return;

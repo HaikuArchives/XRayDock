@@ -3,7 +3,6 @@
 
 #include <Bitmap.h>
 #include <TranslationUtils.h>
-#include <experimental/BitmapTools.h>
 #include <Window.h>
 #include <Entry.h>
 #include <FilePanel.h>
@@ -18,24 +17,16 @@
 #include <Application.h>
 #include <TranslatorFormats.h>
 
+#include "BitmapTools.h"
 
-#ifndef XDOCK_VIEW_H
 #include "XDockView.h"
-#endif
-#ifndef XDOCK_WINDOW_H
 #include "XDockWindow.h"
-#endif
-#ifndef XDOCK_APP_H
 #include "XDockApp.h"
-#endif
-#ifndef BACK_WINDOW_H
 #include "BackWindow.h"
-#endif
-#ifndef DOCK_ICON_MENU_H
 #include "DockIconMenu.h"
-#endif
+
 #include <stdio.h>
-#include <ToolTip.h>
+#include <private/interface/ToolTip.h>
 
 
 
@@ -58,19 +49,15 @@ XDockView::XDockView(BRect rect, const char *icon_p, const char *shortcut_p)
 	// recuperation de l'icone
 	icon = BTranslationUtils::GetBitmap(icon_p);	
 	
-	SetDoubleBuffering(B_UPDATE_RESIZED | B_UPDATE_INVALIDATED | B_UPDATE_SCROLLED | B_UPDATE_EXPOSED);
+	// TODO: [waddlesplash] I think the following was Zeta code,
+	// but I'm not sure. It would be a good idea to investigate.
+	//SetDoubleBuffering(B_UPDATE_RESIZED | B_UPDATE_INVALIDATED | B_UPDATE_SCROLLED | B_UPDATE_EXPOSED);
 	inside_view = false;
 	
 // ajustement couleur fond de vue doit etre la meme que dans draw
 	SetHighColor(0,0,0,0);
 	rgb_color color = {0,0,0,0};
 	SetViewColor(color);
-	
-	
-
-
-
-
 }
 
 XDockView::~XDockView()

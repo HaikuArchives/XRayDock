@@ -1,15 +1,10 @@
 /* ButtonWindow.cpp par etno 2008 */
 
-#ifndef _APPLICATION_H
 #include <Application.h>
-#endif
-#ifndef BACK_WINDOW_H
-#include "BackWindow.h"
-#endif
+#include <Point.h>
 
-#ifndef XDOCK_APP_H
+#include "BackWindow.h"
 #include "XDockApp.h"
-#endif
 
 #include "ButtonWindow.h"
 
@@ -45,8 +40,9 @@ ButtonWindow::ButtonWindow(BRect frame)
 	
 	// Remove the temporary view
 	RemoveChild( &tempView);
-		
-	ClipWindowToPicture(pic,BPoint(0,0), 0);
+	
+	// TODO: [waddlesplash] This is more Zeta/Dano stuff.
+	// ClipWindowToPicture(pic,BPoint(0,0), 0);
 	add_button = new BButton(BRect(5, Bounds().bottom - 91, 61, Bounds().bottom-70),"","Add",
 								new BMessage(ADD_ICON_WINDOW),B_FOLLOW_NONE,B_NAVIGABLE | B_WILL_DRAW); 
 	settings_button = new BButton(BRect(5, Bounds().bottom - 61, 61, Bounds().bottom-40),"","Settings",

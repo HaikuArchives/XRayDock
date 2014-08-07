@@ -11,7 +11,7 @@ class DockImageFilter : public BRefFilter
 {
 	public:	DockImageFilter();
 		virtual ~DockImageFilter();
-		bool Filter(const entry_ref*, BNode*, struct stat*, const char* mimetype);
+		bool Filter(const entry_ref*, BNode*, struct stat_beos*, const char* mimetype);
 };
 
 #endif	//DOCK_IMAGE_FILTER_H
